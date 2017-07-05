@@ -1,0 +1,4 @@
+Django==1.11.3
+django-split-settings==0.2.5
+django-wysiwyg-redactor==0.5.1
+psycopg2==2.7.1
