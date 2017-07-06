@@ -1,0 +1,43 @@
+*{font-family: 'Droid Sans', sans-serif;}
+body{
+    background-color: #A0453D;
+    color: #fff;
+}
+a{
+    text-decoration: none;
+    color:#3498db;
+}
+a:hover{
+    color:#73292A;
+}
+
+#site{
+    width:600px;
+    height: 592px;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    margin-left: -300px;
+    margin-top: -296px;
+}
+.menu{
+    margin-top: 15px;
+    text-align: center;
+}
+.menu a{
+    display: inline-block;
+    border-radius: 15px;
+    background-color:#73292A;
+    padding:8px 15px;
+    color: #fff;
+}
+.menu a:hover{
+    background-color:#fff;
+    color: #73292A;
+}
+
+footer{
+    text-align: center;
+    margin-top: 30px;
+    font-size: 20px;
+}

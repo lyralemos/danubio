@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+    db:
+        image: postgres
+    django:
+        build: .
+        command: gunicorn -b 0.0.0.0:5000 --workers=2 danubio.wsgi
+        volumes:
+            - .:/usr/src/app
+        ports:
+            - "8000:8000"
+        depends_on:
+            - db
+    nginx:
+        image: nginx
+        build: ./nginx/
+        restart: always
+        ports:
+          - 80:80
+        depends_on:
+          django:
+            condition: service_started
+        links:
+          - django

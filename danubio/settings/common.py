@@ -11,8 +11,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'redactor',
-    'produto',
-    'receita',
+    'apps.produto',
+    'apps.receita',
+    'apps.web',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +68,4 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-
-
-# REDACTOR_OPTIONS = {'lang': 'pt-br'}
+STATIC_ROOT = os.path.join(BASE_DIR, "../static")

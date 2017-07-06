@@ -2,7 +2,7 @@ from decimal import Decimal
 
 from django.db import models
 
-from produto.models import Produto
+from apps.produto.models import Produto
 
 class Receita(models.Model):
     produto = models.ForeignKey(Produto)
@@ -53,7 +53,7 @@ class Ingrediente(models.Model):
     preco = models.DecimalField('Preço', max_digits=8, decimal_places=2)
 
     def __str__(self):
-        return self.nome
+        return f"{self.nome} ({self.unidade})"
 
 
 class IngredienteReceita(models.Model):
