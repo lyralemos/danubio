@@ -11,6 +11,3 @@ RUN pip install -r requirements.txt
 
 # add app
 ADD . /usr/src/app
-
-# run server
-CMD python manage.py runserver 0.0.0.0
