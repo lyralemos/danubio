@@ -29,11 +29,11 @@ class ReceitaAdmin(admin.ModelAdmin):
     list_display = (
         'produto',
         'rendimento',
-        'ingredientes_count',
         'custo',
-        'preco_sugerido',
+        'custo_impostos',
         'custo_por_rendimento',
-        'preco_sugerido_por_rendimento',
+        'preco',
+        'lucro',
     )
 
 @admin.register(Ingrediente)

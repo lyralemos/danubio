@@ -19,19 +19,26 @@ class Receita(models.Model):
         for ing in self.ingredientereceita_set.all():
             custo += ing.ingrediente.preco * ing.quantidade
         return round(custo, 2)
-    custo.short_description = 'Custo (R$)'
+    custo.short_description = 'Custo ingrediente(R$)'
+
+    def custo_impostos(self):
+        return round(self.custo() + (self.custo() * Decimal(0.3)),2)
+    custo_impostos.short_description = 'Custo + impostos (R$)'
 
     def custo_por_rendimento(self):
-        return self.custo() / Decimal(self.rendimento)
+        return round(self.custo_impostos() / Decimal(self.rendimento),2)
     custo_por_rendimento.short_description = "Custo por rendimento (R$)"
 
-    def preco_sugerido(self):
-        return round(self.custo() + (self.custo() * Decimal(0.3)),2)
-    preco_sugerido.short_description = 'Preço Sugerido (R$)'
+    def preco(self):
+        return self.produto.preco
+    preco.short_description = "Preço unitário (R$)"
 
-    def preco_sugerido_por_rendimento(self):
-        return round(self.custo_por_rendimento() + (self.custo_por_rendimento() * Decimal(0.3)),2)
-    preco_sugerido_por_rendimento.short_description = "Preço sugerido por rendimento"
+    def lucro(self):
+        if self.produto.preco > 0:
+            diff = self.produto.preco - self.custo_por_rendimento()
+            return round((diff*100) / Decimal(self.produto.preco),2)
+        return 0
+    lucro.short_description = "Lucro (%)"
 
     def __str__(self):
         return self.produto.nome
